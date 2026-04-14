@@ -1,0 +1,139 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+@use 'tailwindcss';
+
+html {
+  // color-scheme: light dark;
+  height: 100%;
+
+  border-bottom-right-radius: var(
+    --mat-form-field-filled-container-shape,
+    var(--mat-sys-corner-extra-small)
+  );
+
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$cyan-palette,
+        tertiary: mat.$orange-palette,
+      ),
+      typography: 'Nunito Sans',
+      density: 0,
+    )
+  );
+
+  @include mat.theme-overrides(
+    (
+      surface: light-dark(#fcfcfc, #202c37),
+    )
+  );
+
+  @include mat.button-overrides(
+    (
+      text-ripple-color: 0,
+      text-state-layer-color: 0,
+      protected-container-shape: 5px,
+      protected-container-color: light-dark(#ffffff, #2b3945),
+      protected-horizontal-padding: 35px,
+      protected-label-text-color: light-dark(#111517, #ffffff),
+      protected-ripple-color: 0,
+      protected-state-layer-color: light-dark(#111517, #ffffff),
+    )
+  );
+
+  @include mat.toolbar-overrides(
+    (
+      container-background-color: light-dark(#ffffff, #2b3945),
+      container-text-color: light-dark(#111517, #ffffff),
+    )
+  );
+
+  @include mat.form-field-overrides(
+    (
+      filled-caret-color: light-dark(#111517, #ffffff),
+      filled-active-indicator-height: 0px,
+      filled-container-color: light-dark(#ffffff, #2b3945),
+      filled-focus-active-indicator-color: light-dark(#111517, #ffffff),
+      filled-focus-label-text-color: light-dark(#111517, #ffffff),
+    )
+  );
+
+  @include mat.select-overrides(
+    (
+      panel-background-color: light-dark(#ffffff, #2b3945),
+      enabled-trigger-text-color: light-dark(#111517, #ffffff),
+      focused-arrow-color: light-dark(#111517, #ffffff),
+      container-elevation-shadow: var(--mat-sys-level3),
+    )
+  );
+
+  @include mat.card-overrides(
+    (
+      filled-container-shape: 7px,
+      filled-container-color: light-dark(#ffffff, #2b3945),
+    )
+  );
+}
+
+body {
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  margin: 0;
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.elevated {
+  box-shadow: var(--mat-sys-level2);
+}
+
+.mat-mdc-form-field .mdc-text-field--filled {
+  border-radius: 0.2rem !important;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px;
+}
+
+.mat-mdc-card {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px !important;
+}
+
+.mat-mdc-raised-button {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 8px 0px !important;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+.bc .mat-mdc-raised-button {
+  box-shadow: 0 8px 20px rgba(245, 7, 7, 0.15) !important;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
